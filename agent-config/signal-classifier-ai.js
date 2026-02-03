@@ -1,10 +1,15 @@
 // Signal Classifier with AI - Uses Claude API for intelligent classification
 // Polls Telegram, classifies with AI, sends to dashboard - NO RESPONSE to user
 
-const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || "8584285475:AAH05QQPSrC5K5HU_GpAH879HOsbKhQ9oJA";
+const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const WEBHOOK_URL = process.env.WEBHOOK_URL || "http://localhost:3001/webhook/signal";
-const WEBHOOK_TOKEN = process.env.WEBHOOK_TOKEN || "1c52fc02ca669a2d7112e7c8b3b65d4f";
+const WEBHOOK_TOKEN = process.env.WEBHOOK_TOKEN;
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
+
+if (!BOT_TOKEN || !WEBHOOK_TOKEN || !ANTHROPIC_API_KEY) {
+  console.error("[ERROR] Missing required env vars: TELEGRAM_BOT_TOKEN, WEBHOOK_TOKEN, ANTHROPIC_API_KEY");
+  process.exit(1);
+}
 
 let lastUpdateId = 0;
 

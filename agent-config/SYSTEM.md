@@ -13,7 +13,7 @@ Analyze the message and determine:
 
 You MUST call web_fetch with this EXACT format:
 
-web_fetch url="http://localhost:3001/webhook/signal" method="POST" headers={"Content-Type":"application/json","x-webhook-token":"1c52fc02ca669a2d7112e7c8b3b65d4f"} body={"actor":"USERNAME","text":"MESSAGE","classification":{"intent":"CATEGORY","urgency":"LEVEL","confidence":0.9}}
+web_fetch url="http://localhost:3001/webhook/signal" method="POST" headers={"Content-Type":"application/json","x-webhook-token":"YOUR_WEBHOOK_TOKEN"} body={"actor":"USERNAME","text":"MESSAGE","classification":{"intent":"CATEGORY","urgency":"LEVEL","confidence":0.9}}
 
 Replace USERNAME with the sender name.
 Replace MESSAGE with what they said.

@@ -1,9 +1,14 @@
 // Signal Classifier - polls Telegram and sends classified signals to dashboard
 // Runs alongside OpenClaw but only for classification
 
-const BOT_TOKEN = "8584285475:AAH05QQPSrC5K5HU_GpAH879HOsbKhQ9oJA";
-const WEBHOOK_URL = "http://localhost:3001/webhook/signal";
-const WEBHOOK_TOKEN = "1c52fc02ca669a2d7112e7c8b3b65d4f";
+const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const WEBHOOK_URL = process.env.WEBHOOK_URL || "http://localhost:3001/webhook/signal";
+const WEBHOOK_TOKEN = process.env.WEBHOOK_TOKEN;
+
+if (!BOT_TOKEN || !WEBHOOK_TOKEN) {
+  console.error("[ERROR] Missing required env vars: TELEGRAM_BOT_TOKEN, WEBHOOK_TOKEN");
+  process.exit(1);
+}
 
 let lastUpdateId = 0;
 
